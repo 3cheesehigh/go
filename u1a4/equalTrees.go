@@ -1,7 +1,11 @@
 package main
 
 import "fmt"
+<<<<<<< HEAD
 import . "github.com/3cheesehigh/go/tree"
+=======
+import . "github.com/3cheesehigh/tree"
+>>>>>>> 4685431465a03a62d2c388e90a88fba240df5bf4
 
 /*
 Zwei Bäume heißein äquivalent, wenn sie gleichviele Knoten haben und deren Inhalte ( in Preorder -Reihenfolge ) paarweise übereinstimmen.
