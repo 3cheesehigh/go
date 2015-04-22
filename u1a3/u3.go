@@ -6,6 +6,8 @@ func main() {
 		a               = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
 		b               = []int{2, 3, 5, 7, 11, 13, 17, 19}
 	)
+	asum = 0 //(1)
+	bsum = 0 //(2)
 	for _, x := range a {
 		asum += x
 	} //(3)
@@ -16,8 +18,6 @@ func main() {
 	if bsum > asum {
 		max = bsum
 	} //(6)
-	asum = 0 //(1)
-	bsum = 0 //(2)
 	println(max)
 }
 

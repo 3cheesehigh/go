@@ -5,7 +5,8 @@ import "fmt"
 import . "github.com/3cheesehigh/go/tree"
 
 /*
-Zwei Bäume heißein äquivalent, wenn sie gleichviele Knoten haben und deren Inhalte ( in Preorder -Reihenfolge ) paarweise übereinstimmen.
+Zwei Bäume heißen äquivalent, wenn sie gleich viele Knoten
+haben und deren Inhalte ( in Preorder -Reihenfolge ) paarweise übereinstimmen.
 */
 
 func equalTrees(tree1, tree2 *Node) bool {
@@ -44,11 +45,21 @@ func travRoutines(tree *Node) chan int {
 func main() {
 	tree1 := Node{1, nil, nil}
 	tree2 := Node{1, nil, nil}
-	Insert(&tree1, 5)
-	Insert(&tree2, 5)
+	tree3 := Node{1, nil, nil}
+	tree4 := Node{1, nil, nil}
+	xs := []int{4, 2, 3, 1, 5, 8, 2}
+	ys := []int{2, 3, 7, 4, 8, 2, 3, 1, 8, 9}
 
+	for i, x := range xs {
+
+		Insert(&tree1, x)
+		Insert(&tree2, x)     // Gleicher Baum
+		Insert(&tree3, ys[i]) // Ungleich aber gleiche Anzahl
+	}
+	for _, y := range ys {
+		Insert(&tree4, y) // Ungleich Bäume
+	}
 	fmt.Println(equalTrees(&tree1, &tree2))
-	//mt.Println(equalTrees(tree1, tree3))
-	//mt.Println(equalTrees(tree1, tree4))
-	//mt.Println(equalTrees(tree1, tree5))
+	fmt.Println(equalTrees(&tree1, &tree3))
+	fmt.Println(equalTrees(&tree1, &tree4))
 }
