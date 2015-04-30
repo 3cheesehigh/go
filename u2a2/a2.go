@@ -2,9 +2,6 @@ package main
 
 import "fmt"
 
-//a)
-//TODO extract as DoubleLikedList package
-
 type Link struct {
 	Cont any
 	next,
@@ -48,22 +45,32 @@ func (list *doubleLinkedList) delEle(n int) {
 	}
 	cur.next.prev = cur.prev
 	cur.prev.next = cur.next
+	//TODO wieder raus
+	cur.next = nil
+	cur.prev = nil
+	cur = nil
 	list.length--
 
 }
 
+//func (list *doubleLinkedList) PrintDoubleLinkedList() {
+//	cur := list.head.next
+//	for i := 0; i < list.length; i++ {
+//		fmt.Printf("%d ", cur.Cont)
+//		cur = cur.next
+//
+//	}
+//	fmt.Printf("\n")
+//}
 func (list *doubleLinkedList) PrintDoubleLinkedList() {
-	cur := list.head.next
-	for i := 0; i < list.length; i++ {
-		fmt.Printf("%d ", cur.Cont)
-		cur = cur.next
-
+	for cur := list.head.next; cur != &list.head; cur = cur.next {
+		fmt.Print(cur.Cont, " ")
 	}
 	fmt.Printf("\n")
 }
 
 func main() {
-	//New list with sentinal
+	//New list with sentinel
 	list := new(doubleLinkedList)
 	list.head.next = &list.head
 	list.head.prev = &list.head
@@ -76,6 +83,10 @@ func main() {
 	list.insEle(2, &newEle3)
 
 	fmt.Printf("Listenlänge vorm Löschen: %d\n", list.length)
+	list.PrintDoubleLinkedList()
+
+	list.delEle(1)
+	fmt.Printf("Listenlänge nach dem  Löschen: %d\n", list.length)
 	list.PrintDoubleLinkedList()
 
 	list.delEle(1)
